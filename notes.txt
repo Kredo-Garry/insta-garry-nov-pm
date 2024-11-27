@@ -1,0 +1,97 @@
+
+
+Users table
+********************
+id              Name
+1               John
+2               Tim
+3               Garry
+
+Categories table
+**************************
+id                  name
+1                Travel
+2                Food
+3                Lifestyle
+4                Technology
+5                Career
+6                Movie
+
+
+Posts table
+***********************************
+id             description of post
+1              I went to Canada last month  (1 travel, 3 Lifestyle, 5 Career)
+2              I like latest technology     (4 technology, 5 Career)
+
+
+
+PIVOT table ---> category_post
+*****************************
+post_id         category_id
+1                   1 [travel]
+1                   3 [Lifestyle]
+1                   5 [Career]
+2                   4 ..
+2                   5 ..
+.
+.
+.
+.
+
+
+
+**********************************
+Users table
+------------
+1      John
+2      Mark
+3      Tim
+
+Follows
+------------
+follower_id                  following_id
+   1                           3
+   3                           2
+
+
+Posts table
+---------------
+post id            name of post             user_id
+  1                 Travel to Macao           2
+  2                 I like Music              2
+  3                 healthy foods             3
+
+  ------------------------------------------------
+  SoftDelete?
+  Deleting a resource from the application, but the still remain in the database table
+
+  To implement this, we have to create a "deleted_at" column in the database table
+
+11262024
+Middleware -> mechanism for inspecting and filtering HTTP requests entering our application.
+
+Think of a middleware as an additional layer of security that examines the requests going through the application.
+
+We will create our own middleware. That is our Goal for this topic.
+
+AdminMiddleware
+
+Our middleware will base on "role_id"
+ --> admin = 1;
+ --> regular user = 2;
+
+ GATE -- closure that determines if a user is authorized to perform a given action
+
+ ******************
+ What is a database seeder?
+
+ php artisan db:seed ---  this will add data into your tables.
+ Example: CategorySeeder --> Cars, Motorcycles, Bicyles
+@auth
+
+  if(Auth::user()->role_id === 1){
+      Search Form
+  }
+
+@endauth
